@@ -1,17 +1,17 @@
 {
   "accountAssociation": {
     "header": "PASTE_YOUR_HEADER_HERE",
-    "payload": "https://ibb.co.com/k666zXX0",
+    "payload": "https://i.ibb.co/k666zXX0/yourimage.png",
     "signature": "PASTE_YOUR_SIGNATURE_HERE"
   },
   "miniapp": {
     "version": "1",
     "name": "based",
     "homeUrl": "https://based-snowy.vercel.app/",
-    "iconUrl": "https://based-snowy.vercel.app/logo.png",
-    "splashImageUrl": "https://based-snowy.vercel.app/logo.png",
+    "iconUrl": "https://i.ibb.co/k666zXX0/yourimage.png",
+    "splashImageUrl": "https://i.ibb.co/k666zXX0/yourimage.png",
     "splashBackgroundColor": "#000000",
-    "imageUrl": "https://based-snowy.vercel.app/logo.png",
+    "imageUrl": "https://i.ibb.co/k666zXX0/yourimage.png",
     "webhookUrl": "https://based-snowy.vercel.app/webhook"
   }
 }
