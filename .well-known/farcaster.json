@@ -1,12 +1,12 @@
 {
   "accountAssociation": {
     "header": "PASTE_YOUR_HEADER_HERE",
-    "payload": "PASTE_YOUR_PAYLOAD_HERE",
+    "payload": "https://ibb.co.com/k666zXX0",
     "signature": "PASTE_YOUR_SIGNATURE_HERE"
   },
   "miniapp": {
     "version": "1",
-    "name": "BaseStateX.VercelApp",
+    "name": "based",
     "homeUrl": "https://based-snowy.vercel.app/",
     "iconUrl": "https://based-snowy.vercel.app/logo.png",
     "splashImageUrl": "https://based-snowy.vercel.app/logo.png",
