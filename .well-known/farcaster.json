@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "PASTE_YOUR_HEADER_HERE",
+    "payload": "PASTE_YOUR_PAYLOAD_HERE",
+    "signature": "PASTE_YOUR_SIGNATURE_HERE"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "BaseStateX.VercelApp",
+    "homeUrl": "https://basedx.vercel.app/",
+    "iconUrl": "https://basedx.vercel.app/logo.png",
+    "splashImageUrl": "https://basedx.vercel.app/logo.png",
+    "splashBackgroundColor": "#000000",
+    "imageUrl": "https://basedx.vercel.app/logo.png",
+    "webhookUrl": "https://basedx.vercel.app/webhook"
+  }
+}

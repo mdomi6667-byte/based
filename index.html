@@ -1,13 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Farcaster Mini App & Frame Metadata -->
+    <meta name="fc:frame" content='{
+      "version": "1",
+      "imageUrl": "https://basedx.vercel.app/logo.png",
+      "button": {
+        "title": "Open BaseStateX.VercelApp",
+        "action": {
+          "type": "launch_frame",
+          "name": "BaseStateX.VercelApp",
+          "url": "https://basedx.vercel.app",
+          "splashImageUrl": "https://basedx.vercel.app/logo.png",
+          "splashBackgroundColor": "#000000"
+        }
+      }
+    }' />
+    <meta name="fc:miniapp" content='{
+      "version": "1",
+      "imageUrl": "https://basedx.vercel.app/logo.png",
+      "button": {
+        "title": "Open BaseStateX.VercelApp",
+        "action": {
+          "type": "launch_frame",
+          "name": "BaseStateX.VercelApp",
+          "url": "https://basedx.vercel.app",
+          "splashImageUrl": "https://basedx.vercel.app/logo.png",
+          "splashBackgroundColor": "#000000"
+        }
+      }
+    }' />
+
     <title>Based | Build & Create</title>
+    <link rel="icon" href="/logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -16,10 +49,16 @@
             colors: {
               base: {
                 blue: '#0052FF',
-                dark: '#0B0C10',
-                gray: '#F3F4F6',
-                glass: 'rgba(255, 255, 255, 0.7)'
+                dark: '#050505',
+                light: '#F5F5F7',
+                cardDark: '#1C1C1E',
+                cardLight: '#FFFFFF',
               }
+            },
+            boxShadow: {
+              'ios': '0 4px 20px -2px rgba(0, 0, 0, 0.1)',
+              'ios-hover': '0 8px 30px -4px rgba(0, 0, 0, 0.15)',
+              'glow': '0 0 20px rgba(0, 82, 255, 0.5)',
             }
           }
         }
@@ -27,18 +66,30 @@
     </script>
     <style>
       body {
-        background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
-        color: #0F172A;
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
-      /* Hide scrollbar for clean UI but keep functionality */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
+      
+      /* Dark mode inputs autofill fix */
+      .dark input:-webkit-autofill,
+      .dark input:-webkit-autofill:hover, 
+      .dark input:-webkit-autofill:focus, 
+      .dark input:-webkit-autofill:active{
+          -webkit-box-shadow: 0 0 0 30px #111 inset !important;
+          -webkit-text-fill-color: white !important;
       }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+
+      /* Light mode inputs autofill fix */
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover, 
+      input:-webkit-autofill:focus, 
+      input:-webkit-autofill:active{
+          -webkit-box-shadow: 0 0 0 30px #F3F4F6 inset !important;
+          -webkit-text-fill-color: black !important;
+      }
+      
+      .glass {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
       }
     </style>
   <script type="importmap">
@@ -55,8 +106,18 @@
 }
 </script>
 </head>
-  <body>
+  <body class="bg-base-light text-black dark:bg-black dark:text-white antialiased selection:bg-base-blue selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+    
+    <!-- Farcaster Mini App SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@farcaster/miniapp-sdk/dist/index.min.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        if (window.frame && frame.sdk && frame.sdk.actions) {
+          frame.sdk.actions.ready();
+        }
+      });
+    </script>
   </body>
 </html>

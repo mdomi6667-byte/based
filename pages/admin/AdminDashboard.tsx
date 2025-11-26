@@ -1,4 +1,3 @@
-
 import React from 'react';
 import AdminLayout from '../../components/AdminLayout';
 import { StorageService } from '../../services/storage';
@@ -19,13 +18,13 @@ const AdminDashboard: React.FC = () => {
   ];
 
   const StatCard = ({ title, value, icon: Icon, color }: any) => (
-    <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+    <div className="bg-[#111] p-6 rounded-2xl border border-white/10 shadow-sm flex items-center justify-between">
         <div>
-            <p className="text-sm font-medium text-gray-500 mb-1">{title}</p>
-            <h3 className="text-3xl font-bold text-gray-900">{value}</h3>
+            <p className="text-sm font-medium text-gray-400 mb-1">{title}</p>
+            <h3 className="text-3xl font-bold text-white">{value}</h3>
         </div>
-        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${color}`}>
-            <Icon size={24} className="text-white" />
+        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${color} bg-opacity-20`}>
+            <Icon size={24} className={color.replace('bg-', 'text-')} />
         </div>
     </div>
   );
@@ -33,8 +32,8 @@ const AdminDashboard: React.FC = () => {
   return (
     <AdminLayout>
         <div className="mb-8">
-            <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-            <p className="text-gray-500">Platform overview and metrics.</p>
+            <h1 className="text-2xl font-bold text-white">Dashboard</h1>
+            <p className="text-gray-400">Platform overview and metrics.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -45,48 +44,27 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h3 className="font-bold text-gray-900 mb-6">Visitor Traffic</h3>
+            <div className="bg-[#111] p-6 rounded-2xl border border-white/10 shadow-sm">
+                <h3 className="font-bold text-white mb-6">Visitor Traffic</h3>
                 <div className="h-64">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={chartData}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
-                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} />
-                            <YAxis axisLine={false} tickLine={false} tick={{fill: '#9ca3af', fontSize: 12}} />
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#333" />
+                            <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} />
+                            <YAxis axisLine={false} tickLine={false} tick={{fill: '#6b7280', fontSize: 12}} />
                             <Tooltip 
-                                cursor={{fill: '#f9fafb'}} 
-                                contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)'}}
+                                cursor={{fill: '#333'}} 
+                                contentStyle={{borderRadius: '8px', border: 'none', background: '#222', color: '#fff', boxShadow: '0 4px 20px rgba(0,0,0,0.5)'}}
                             />
                             <Bar dataKey="visits" fill="#0052FF" radius={[4, 4, 0, 0]} />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
             </div>
-
-            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h3 className="font-bold text-gray-900 mb-6">Recent Activity</h3>
-                <div className="space-y-6">
-                    <div className="flex gap-4 items-start">
-                        <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 text-xs font-bold">1</div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-900">New submission: "DeFi Aggregator"</p>
-                            <p className="text-xs text-gray-500">2 minutes ago by Alice Builder</p>
-                        </div>
-                    </div>
-                    <div className="flex gap-4 items-start">
-                        <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-500 text-xs font-bold">2</div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-900">User Verified: Bob Creator</p>
-                            <p className="text-xs text-gray-500">1 hour ago</p>
-                        </div>
-                    </div>
-                     <div className="flex gap-4 items-start">
-                        <div className="w-8 h-8 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 text-xs font-bold">3</div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-900">Spike in traffic (US Region)</p>
-                            <p className="text-xs text-gray-500">3 hours ago</p>
-                        </div>
-                    </div>
+            <div className="bg-[#111] p-6 rounded-2xl border border-white/10 shadow-sm flex items-center justify-center text-gray-500">
+                <div className="text-center">
+                    <Activity size={48} className="mx-auto mb-4 opacity-50" />
+                    <p>More analytics coming soon...</p>
                 </div>
             </div>
         </div>
