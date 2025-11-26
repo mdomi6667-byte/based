@@ -61,3 +61,16 @@ export interface AppState {
   votes: Vote[];
   currentUser: UserProfile | null;
 }
+
+// Extend Window interface for Farcaster SDK
+declare global {
+  interface Window {
+    frame?: {
+      sdk?: {
+        actions?: {
+          ready: () => void;
+        };
+      };
+    };
+  }
+}

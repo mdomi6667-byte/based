@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -72,6 +72,24 @@ const AppRoutes = () => {
 };
 
 const App: React.FC = () => {
+  // Initialize Farcaster Mini App SDK when the app mounts
+  useEffect(() => {
+    if (window.frame?.sdk?.actions?.ready) {
+      window.frame.sdk.actions.ready();
+    } else {
+      // Fallback: Check again after a short delay in case SDK loads slightly later
+      const checkSdk = setInterval(() => {
+        if (window.frame?.sdk?.actions?.ready) {
+          window.frame.sdk.actions.ready();
+          clearInterval(checkSdk);
+        }
+      }, 100);
+
+      // Stop checking after 3 seconds
+      setTimeout(() => clearInterval(checkSdk), 3000);
+    }
+  }, []);
+
   return (
     <ThemeProvider>
       <AuthProvider>
