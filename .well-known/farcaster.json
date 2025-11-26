@@ -7,11 +7,11 @@
   "miniapp": {
     "version": "1",
     "name": "BaseStateX.VercelApp",
-    "homeUrl": "https://basedx.vercel.app/",
-    "iconUrl": "https://basedx.vercel.app/logo.png",
-    "splashImageUrl": "https://basedx.vercel.app/logo.png",
+    "homeUrl": "https://based-snowy.vercel.app/",
+    "iconUrl": "https://based-snowy.vercel.app/logo.png",
+    "splashImageUrl": "https://based-snowy.vercel.app/logo.png",
     "splashBackgroundColor": "#000000",
-    "imageUrl": "https://basedx.vercel.app/logo.png",
-    "webhookUrl": "https://basedx.vercel.app/webhook"
+    "imageUrl": "https://based-snowy.vercel.app/logo.png",
+    "webhookUrl": "https://based-snowy.vercel.app/webhook"
   }
 }
