@@ -15,6 +15,7 @@ import AdminContent from './pages/admin/AdminContent';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { UserRole } from './types';
+import sdk from '@farcaster/frame-sdk';
 
 // Admin Route Wrapper
 const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -74,20 +75,16 @@ const AppRoutes = () => {
 const App: React.FC = () => {
   // Initialize Farcaster Mini App SDK when the app mounts
   useEffect(() => {
-    if (window.frame?.sdk?.actions?.ready) {
-      window.frame.sdk.actions.ready();
-    } else {
-      // Fallback: Check again after a short delay in case SDK loads slightly later
-      const checkSdk = setInterval(() => {
-        if (window.frame?.sdk?.actions?.ready) {
-          window.frame.sdk.actions.ready();
-          clearInterval(checkSdk);
+    const initSdk = async () => {
+        try {
+            // Signal to Farcaster that the app is ready to be displayed
+            await sdk.actions.ready();
+        } catch (error) {
+            console.error("Failed to initialize Farcaster SDK:", error);
         }
-      }, 100);
-
-      // Stop checking after 3 seconds
-      setTimeout(() => clearInterval(checkSdk), 3000);
-    }
+    };
+    
+    initSdk();
   }, []);
 
   return (
